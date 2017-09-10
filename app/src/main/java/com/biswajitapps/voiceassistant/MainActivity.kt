@@ -6,18 +6,31 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.speech.RecognizerIntent
+import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.Toast
+import com.biswajitapps.voiceassistant.adapter.MessageListAdapter
+import com.biswajitapps.voiceassistant.models.Message
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private val REQ_CODE_SPEECH_INPUT = 1000
+    private var adapter: MessageListAdapter? = null
+    private var messages: ArrayList<Message>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        messages = ArrayList()
+        adapter = MessageListAdapter(messages!!)
+        val layoutManager = LinearLayoutManager(this)
+        layoutManager.reverseLayout = true
+        rvMessageList.layoutManager = layoutManager
+        rvMessageList.adapter = adapter
 
         fabMic.setOnClickListener(this)
     }
@@ -57,7 +70,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                     val result = data
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
-                    Toast.makeText(this@MainActivity, result[0], Toast.LENGTH_LONG).show()
+                    val message = Message()
+                    message.message = result[0]
+                    messages!!.add(message)
+
+                    if (adapter != null) {
+                        adapter!!.notifyDataSetChanged()
+                    }
+                    //Toast.makeText(this@MainActivity, result[0], Toast.LENGTH_LONG).show()
                     //txtSpeechInput.setText(result[0])
                 }
             }
