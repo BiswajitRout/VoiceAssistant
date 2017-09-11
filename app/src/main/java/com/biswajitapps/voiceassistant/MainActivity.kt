@@ -28,7 +28,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         messages = ArrayList()
         adapter = MessageListAdapter(messages!!)
         val layoutManager = LinearLayoutManager(this)
-        layoutManager.reverseLayout = true
+        /*layoutManager.reverseLayout = true*/
+        layoutManager.stackFromEnd = true
         rvMessageList.layoutManager = layoutManager
         rvMessageList.adapter = adapter
 
