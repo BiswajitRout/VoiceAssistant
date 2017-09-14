@@ -78,6 +78,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     if (adapter != null) {
                         adapter!!.notifyDataSetChanged()
                     }
+
+                    /*if (!textMatchList.isEmpty()) {
+     // If first Match contains the 'search' word
+     // Then start web search.
+     if (textMatchList.get(0).contains("search")) {
+
+        String searchQuery = textMatchList.get(0);
+                                           searchQuery = searchQuery.replace("search","");
+        Intent search = new Intent(Intent.ACTION_WEB_SEARCH);
+        search.putExtra(SearchManager.QUERY, searchQuery);
+        startActivity(search);
+     } else {
+         // populate the Matches
+         mlvTextMatches
+      .setAdapter(new ArrayAdapter<string>(this,
+        android.R.layout.simple_list_item_1,
+        textMatchList));
+     }*/
                     //Toast.makeText(this@MainActivity, result[0], Toast.LENGTH_LONG).show()
                     //txtSpeechInput.setText(result[0])
                 }
