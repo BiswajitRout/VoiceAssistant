@@ -58,8 +58,8 @@ class MessageListAdapter(private val mMessageList: ArrayList<Message>) :
     }
 
     private inner class SentMessageHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        internal var messageText: TextView = itemView.findViewById(R.id.text_message_body)
-        internal var timeText: TextView = itemView.findViewById(R.id.text_message_time)
+        internal var messageText: TextView = itemView.findViewById(R.id.text_message_body) as TextView
+        internal var timeText: TextView = itemView.findViewById(R.id.text_message_time) as TextView
 
         internal fun bind(message: Message) {
             messageText.text = message.message
@@ -70,10 +70,10 @@ class MessageListAdapter(private val mMessageList: ArrayList<Message>) :
     }
 
     private inner class ReceivedMessageHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        internal var messageText: TextView = itemView.findViewById(R.id.text_message_body)
-        internal var timeText: TextView = itemView.findViewById(R.id.text_message_time)
-        internal var nameText: TextView = itemView.findViewById(R.id.text_message_name)
-        internal var profileImage: ImageView = itemView.findViewById(R.id.image_message_profile)
+        internal var messageText: TextView = itemView.findViewById(R.id.text_message_body) as TextView
+        internal var timeText: TextView = itemView.findViewById(R.id.text_message_time) as TextView
+        internal var nameText: TextView = itemView.findViewById(R.id.text_message_name) as TextView
+        internal var profileImage: ImageView = itemView.findViewById(R.id.image_message_profile) as ImageView
 
         internal fun bind(message: Message) {
             messageText.text = message.message
