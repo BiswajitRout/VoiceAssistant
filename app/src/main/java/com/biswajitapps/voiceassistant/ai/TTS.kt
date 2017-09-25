@@ -17,19 +17,24 @@
 package com.biswajitapps.voiceassistant.ai
 
 import android.content.Context
+import android.os.Build
 import android.speech.tts.TextToSpeech
 
 class TTS {
 
-    companion object {
-        private var textToSpeech: TextToSpeech? = null
+    private var textToSpeech: TextToSpeech? = null
 
-        @JvmStatic
-        fun init(context: Context, text: String) {
-            if (textToSpeech == null) {
-                textToSpeech = TextToSpeech(context, TextToSpeech.OnInitListener { })
-            }
+    fun init(context: Context) : TTS {
+        if (textToSpeech == null)
+            textToSpeech = TextToSpeech(context, TextToSpeech.OnInitListener { })
+        return this
+    }
+
+    fun startSpeak(text: String) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             textToSpeech!!.speak(text, TextToSpeech.QUEUE_FLUSH, null)
+        } else {
+            textToSpeech!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
         }
     }
 }

@@ -18,6 +18,8 @@ package com.biswajitapps.voiceassistant.ai
 
 class LanguageConfig(private val languageCode: String, val accessToken: String) {
 
+
+
     override fun toString(): String {
         return languageCode
     }

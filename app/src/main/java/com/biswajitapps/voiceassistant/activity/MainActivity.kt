@@ -154,7 +154,8 @@ class MainActivity : AppCompatActivity(), AIDialog.AIDialogListener, View.OnClic
             Log.i(TAG, "Action: " + result.action)
             val speech = result.fulfillment.speech
             Log.i(TAG, "Speech: " + speech)
-            TTS.init(this, speech)
+            val tts = TTS().init(this)
+            tts.startSpeak(speech)
 
             val metadata = result.metadata
             if (metadata != null) {

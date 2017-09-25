@@ -9,7 +9,6 @@ import android.widget.ImageView
 import com.biswajitapps.voiceassistant.R
 import com.biswajitapps.voiceassistant.models.Message
 
-
 /**
  * Created by Biswajit Rout on 9/10/2017.
  */
